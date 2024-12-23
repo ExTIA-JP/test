@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>タイトル</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&display=swap&subset=japanese">
+<link rel="stylesheet" href="/common/css/common.css">
+<style>
+* { margin: 0; padding: 0; }
+.header {
+  position: relative;
+  margin: 50px;
+  /* background: url("img/cover01.png") no-repeat 50% 50%; */
+}
+.header h1 {
+  position: absolute;
+  top: calc(50% - 20px);
+  left: 0;
+  z-index: 2;
+  font-size: 20px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>見出し</h1>
+  <div><img src="img/cover01.png" alt=""></div>
+</div>
+
+<p class="test"></p>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<script src="/common/js/common.js"></script>
+<script>
+$(function() {
+
+  var $el = $('.test');
+  var classActive = 'active';
+  var time = 5000;
+  var init = function() {
+    setTimeout(function() {
+      setLoop();
+    }, time);
+    return this;
+  };
+  var setLoop = function() {
+    setTimeout(setLoop, setTime());
+    $el.toggleClass(classActive);
+
+    return this;
+  };
+  var setTime = function() {
+    var num = 3000;
+    if($el.hasClass(classActive)) {
+      num = Math.floor(Math.random() * 1000);
+    }
+    console.log(num);
+    return num;
+  };
+  init();
+
+
+
+});
+</script>
+</body>
+</html>
